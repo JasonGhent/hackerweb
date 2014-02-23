@@ -1,0 +1,3 @@
+- Create an actual queueing mechanism instead of faking it with timeout.
+- Scrape the articles HN links to, apply 'app' styling, and cache for offline viewing.
+- Migrate API scraping logic to client to avoid irritating HN and to remove a dependency on another service. (Not actually sure this would be a good idea.)
