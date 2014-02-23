@@ -1,6 +1,4 @@
 (function(w){
-//@TODO: remove
-localStorage.clear();sessionStorage.clear();
 
   var isSafari = function(){
     var ua = navigator.userAgent.toLowerCase(); 
