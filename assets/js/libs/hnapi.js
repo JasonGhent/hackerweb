@@ -4,7 +4,7 @@
 		supportXDomainRequest = !!w.XDomainRequest,
 		supportCORS = 'withCredentials' in new XMLHttpRequest() || supportXDomainRequest,
 		worker = false,
-		timeout = 20000, // 20 seconds timeout
+		timeout = 120000, // 120 seconds timeout
 		requests = {};
 
 	try {
@@ -77,13 +77,15 @@
 	};
 
 	var urls = [
-		'http://node-hnapi-eu.herokuapp.com/', // Heroku (EU)
-		'http://node-hnapi.azurewebsites.net/', // Windows Azure (North EU)
-		'http://node-hnapi-asia.azurewebsites.net/', // Windows Azure (East Asia)
-		'http://node-hnapi-eus.azurewebsites.net/', // Windows Azure (East US)
-		'http://node-hnapi-weu.azurewebsites.net/', // Windows Azure (West EU)
-		'http://node-hnapi-wus.azurewebsites.net/', // Windows Azure (West US)
-		'http://node-hnapi-ncus.azurewebsites.net/' // Windows Azure (North Central US)
+//'http://localhost:3001/'
+		'http://hn-absurdnerd.rhcloud.com/', // OpenShift
+//		'http://node-hnapi-eu.herokuapp.com/', // Heroku (EU)
+//		'http://node-hnapi.azurewebsites.net/', // Windows Azure (North EU)
+//		'http://node-hnapi-asia.azurewebsites.net/', // Windows Azure (East Asia)
+//		'http://node-hnapi-eus.azurewebsites.net/', // Windows Azure (East US)
+//		'http://node-hnapi-weu.azurewebsites.net/', // Windows Azure (West EU)
+//		'http://node-hnapi-wus.azurewebsites.net/', // Windows Azure (West US)
+//		'http://node-hnapi-ncus.azurewebsites.net/' // Windows Azure (North Central US)
 	];
 	var shuffle = function(array){ // Fisher-Yates
 		for (var i = array.length - 1; i > 0; i--){
