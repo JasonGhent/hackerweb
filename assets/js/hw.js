@@ -120,12 +120,22 @@ console.log(sessionStorage);
       if (!hw.news.options.disclosure){
         if (item.id) item.url = '#/item/' + item.id;
       } else {
-        if (item.type == 'link') item.detail_disclosure = true;
+//        if (item.type == 'link') item.detail_disclosure = true;
+        item.detail_disclosure = true;
         if (/^#\//.test(item.url)){
           item.disclosure = true;
           item.domain = null;
         }
       }
+
+      // proper callbacks have been forsaken. just pretend it was already rendered.
+      setTimeout(function() {
+        if(amplify.store.sessionStorage('hacker-comments-' + item.id)) {
+          txt = document.querySelectorAll('#story-'+item.id+' .metadata')[0];
+          if(txt && txt.style) txt.style.opacity = '1.0';
+        }
+      },200);
+
       item.i_point = item.points == 1 ? 'point' : 'points';
       item.i_comment = item.comments_count == 1 ? 'comment' : 'comments';
       return tmpl('post', item);
@@ -196,6 +206,7 @@ console.log(sessionStorage);
     render: function(opts){
       if (loadingNews) return;
       if (!opts) opts = {};
+
       var cached = amplify.store('hacker-news-cached');
       var tmpl1 = tmpl('stories-load');
       var loadNews = function(_data){
@@ -294,8 +305,14 @@ console.log(sessionStorage);
           if(self.content.length>0 && self.process<=2){
             self.process++;
             var item = self.content.pop();
-            if(!item.id) return self.process--; // post has no id. is a YC ad.
+            if(!item.id) return self.process--;
+            if(item.type==='job') {
+              // server does not accept non-digit regexp.
+              item.id = '000'+item.id;
+            }
             hw.comments.getItemDetails(item.id,function(){
+              txt = document.querySelectorAll('#story-'+item.id+' .metadata')[0];
+              if(txt && txt.style) txt.style.opacity = '1.0';
               self.process--;
             });
           }

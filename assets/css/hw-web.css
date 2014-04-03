@@ -243,6 +243,7 @@ pre, code{
 	font-size: 12px;
 	color: #666d74;
 	line-height: 1.2em;
+  opacity: 0.3;
 }
 .tableview-links li>a:hover .link-text{
 	text-decoration: underline;
