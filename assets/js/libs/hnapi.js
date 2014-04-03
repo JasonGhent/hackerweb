@@ -77,8 +77,8 @@
 	};
 
 	var urls = [
-'http://localhost:3001/'
-//		'http://hn-absurdnerd.rhcloud.com/', // OpenShift
+//'http://localhost:3001/'
+		'http://hn-absurdnerd.rhcloud.com/', // OpenShift
 //		'http://node-hnapi-eu.herokuapp.com/', // Heroku (EU)
 //		'http://node-hnapi.azurewebsites.net/', // Windows Azure (North EU)
 //		'http://node-hnapi-asia.azurewebsites.net/', // Windows Azure (East Asia)
